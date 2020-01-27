@@ -15,10 +15,13 @@ public class WebAppController {
     @Value("${spring.application.name}")
     String appName;
 
+    int amount = 50;
+
     @GetMapping("/")
     public String homePage(Model model) {
         model.addAttribute("appName", appName);
         model.addAttribute("username", "student-1");
+        model.addAttribute("amount", amount);
         return "index";
     }
 
