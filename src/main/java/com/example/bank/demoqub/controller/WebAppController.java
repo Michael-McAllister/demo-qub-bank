@@ -19,10 +19,30 @@ public class WebAppController {
 
     @GetMapping("/")
     public String homePage(Model model) {
-        model.addAttribute("appName", appName);
         model.addAttribute("username", "student-1");
         model.addAttribute("amount", amount);
         return "index";
+    }
+
+    @GetMapping("/pay")
+    public String pay(Model model) {
+        amount = amount - 10;
+        return homePage(model);
+    }
+
+    @GetMapping("/receive")
+    public String receive(Model model) {
+        if(amount >= 100) {
+            return error(model);
+        }
+        amount = amount + 10;
+        return homePage(model);
+    }
+
+    @GetMapping("/error")
+    public String error(Model model) {
+        model.addAttribute("username", "student-1");
+        return "error";
     }
 
 }
