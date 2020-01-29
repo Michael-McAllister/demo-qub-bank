@@ -26,7 +26,7 @@ public class WebAppController {
 
     @GetMapping("/pay")
     public String pay(Model model) {
-        if(amount <= 10) {
+        if(amount < 10) {
             return error(model);
         }
         amount = amount - 10;
