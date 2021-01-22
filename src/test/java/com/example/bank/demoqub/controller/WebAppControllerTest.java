@@ -46,15 +46,6 @@ public class WebAppControllerTest {
     public void given50Pound_whenReceive_thenReturnContains60() throws Exception {
         mockMvc.perform(get("/receive"))
                 .andExpect(content().string(containsString("£60")));
-
-    }
-
-    @Test
-    public void given0Pound_whenPay_thenReturnContains60() throws Exception {
-        classUnderTest.amount = 0;
-        mockMvc.perform(get("/pay"))
-                .andExpect(content().string(containsString("I can't let you do that")));
-
     }
 
 }
