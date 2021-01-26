@@ -48,4 +48,11 @@ public class WebAppControllerTest {
                 .andExpect(content().string(containsString("£60")));
     }
 
+    @Test
+    public void given0Pound_whenPay_thenReturnError() throws Exception {
+        classUnderTest.amount = 0;
+        mockMvc.perform(get("/pay"))
+                .andExpect(content().string(containsString("I can't let you do that")));
+    }
+
 }
