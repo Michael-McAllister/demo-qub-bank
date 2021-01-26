@@ -1,8 +1,10 @@
-image: java:8
-
-stages:
-  - build
-
-build:
-  stage: build
-  script: ./mvnw package
+java:
+  stage: test
+  script:
+    - mvn verify
+  artifacts:
+    when: always
+    reports:
+      junit:
+        - target/surefire-reports/TEST-*.xml
+        - target/failsafe-reports/TEST-*.xml
